@@ -26,7 +26,8 @@
 }
 
 .background-img{
-  background-image: url(./images/coconut\ pattern.jpg);
+  background-image:inear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 255, 0.3)),
+  url(./images/Hostel-background.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 
