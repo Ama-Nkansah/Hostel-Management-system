@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Cost Estimator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #eef2f7;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #444;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hostel Cost Estimator</h1>
+    <form id="costForm">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName" placeholder="Enter item name" required>
+
+      <label for="itemCost">Cost per Item (₵):</label>
+      <input type="number" id="itemCost" placeholder="Enter cost per item" required>
+
+      <label for="itemQuantity">Quantity:</label>
+      <input type="number" id="itemQuantity" placeholder="Enter quantity" required>
+
+      <button type="button" class="button" onclick="calculateCost()">Calculate Total Cost</button>
+    </form>
+
+    <div class="result" id="result">
+      <!-- The result will be displayed here -->
+    </div>
+  </div>
+
+  <script>
+    function calculateCost() {
+      const itemName = document.getElementById('itemName').value;
+      const itemCost = parseFloat(document.getElementById('itemCost').value);
+      const itemQuantity = parseInt(document.getElementById('itemQuantity').value);
+
+      if (!itemName || isNaN(itemCost) || isNaN(itemQuantity)) {
+        document.getElementById('result').innerText = 'Please fill out all fields correctly.';
+        return;
+      }
+
+      const totalCost = itemCost * itemQuantity;
+      document.getElementById('result').innerHTML = `
+        <p><strong>Item:</strong> ${itemName}</p>
+        <p><strong>Cost per Item:</strong> ₵${itemCost.toFixed(2)}</p>
+        <p><strong>Quantity:</strong> ${itemQuantity}</p>
+        <p><strong>Total Cost:</strong> ₵${totalCost.toFixed(2)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
