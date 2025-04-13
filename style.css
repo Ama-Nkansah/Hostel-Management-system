@@ -10,6 +10,10 @@
   text-shadow: 1px 1px 2px wheat;
 }
 
+#header{
+  background-color:#444;
+}
+
   span{ 
   font-family: "Agu Display", serif;
   font-optical-sizing: auto;
