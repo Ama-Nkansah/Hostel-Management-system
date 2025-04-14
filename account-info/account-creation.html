@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .form-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+    }
+    .form-container label {
+      font-weight: bold;
+      color: #444;
+    }
+    .form-container input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      width: 100%;
+      padding-left: 5px;
+    }
+    .form-container button {
+      padding: 10px;
+      background-color: #800000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .form-container button:hover {
+      background-color: #218838;
+    }
+    .close-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+    .close-btn:hover {
+      background-color: #c82333;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" id="home-nav">Home</a>
+  </nav>
+
+  <button class="btn" id="openFormBtn">Create Account</button>
+
+  <div class="form-container" id="accountForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username">
+    
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email">
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    
+    <button type="submit">Submit</button>
+    <button type="button" class="close-btn" id="closeFormBtn">Close</button>
+  </div>
+
+  <script>
+    const openFormBtn = document.getElementById('openFormBtn');
+    const closeFormBtn = document.getElementById('closeFormBtn');
+    const accountForm = document.getElementById('accountForm');
+
+    // Show the form when the "Create Account" button is clicked
+    openFormBtn.addEventListener('click', () => {
+      accountForm.style.display = 'flex';
+    });
+
+    // Hide the form when the "Close" button is clicked
+    closeFormBtn.addEventListener('click', () => {
+      accountForm.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>

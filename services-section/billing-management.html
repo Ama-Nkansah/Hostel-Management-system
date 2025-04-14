@@ -87,10 +87,37 @@
     .hidden {
       display: none;
     }
+
+    
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <nav>
+    <a href="../index.html" id="home-nav">Home</a>
+  </nav>
+
+  <div class="mt-60 container">
     <h1>Hostel Electricity Billing</h1>
     <form id="billing-form">
       <div class="form-group">

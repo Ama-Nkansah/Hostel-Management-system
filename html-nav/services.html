@@ -23,6 +23,7 @@
     }
     section {
       padding: 40px 20px;
+      background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
     }
     .services-container {
       max-width: 1200px;
@@ -33,15 +34,16 @@
     }
     .card {
       background-color: #fff;
+      text-decoration: none;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px #0000001a;
       text-align: center;
     }
     .card h3 {
       font-size: 1.5rem;
       margin-bottom: 10px;
-      color: #444;
+      color: #800000;
     }
     .card p {
       color: #666;
@@ -52,19 +54,49 @@
       text-align: center;
       padding: 10px 0;
     }
+
+    #home-nav{
+      color: beige;
+    }
+
+    .services-topic{
+     color: #800000;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Our Services</h1>
-  </header>
+  <nav>
+    <a href="../index.html" id="home-nav">Home</a>
+  </nav>
 
-  <!-- Services Section -->
-  <section>
+  <section class="mt-20">
+    <h1 class="services-topic text-center">Our Services</h1>
     <div class="services-container">
       <!-- Service 1 -->
-      <a href="services-section/billing-management.html" class="card">
+      <a href="../services-section/billing-management.html" class="card">
         <h3>Billing Management</h3>
         <p>Easily track and manage your bills with detailed and transparent records.</p>
       </a>
@@ -74,7 +106,7 @@
         <p>Estimate your expenses with an easy-to-use tool for precise budgeting.</p>
       </a>
       <!-- Service 3 -->
-      <a href="services-section/support.html" class="card">
+      <a href="../services-section/support.html" class="card">
         <h3>Tenant Support</h3>
         <p>Access 24/7 support for your questions and concerns as a tenant.</p>
       </a>
@@ -87,7 +119,7 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer id="home-nav">
     &copy; 2025 Hostel Management System. All rights reserved.
   </footer>
 </body>
