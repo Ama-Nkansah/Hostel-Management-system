@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
+    }
+    header {
+      background-color: #800000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .room-list {
+      margin-top: 20px;
+    }
+    .room {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .room h3 {
+      margin: 0;
+      color: #444;
+    }
+    .room button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .room button:hover {
+      background-color: #c82333;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    form input,
+    form button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    form button {
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Room Management System</h1>
+</header>
+
+<div class="container">
+  <h2>Add New Room</h2>
+  <form id="roomForm">
+    <input type="text" id="roomName" placeholder="Enter room name" required>
+    <input type="text" id="roomCapacity" placeholder="Enter capacity" required>
+    <button type="submit">Add Room</button>
+  </form>
+
+  <h2>Available Rooms</h2>
+  <div class="room-list" id="roomList">
+    <p>No rooms available. Add a room to get started.</p>
+  </div>
+</div>
+
+<script>
+  const roomForm = document.getElementById('roomForm');
+  const roomList = document.getElementById('roomList');
+
+  // Handle form submission
+  roomForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const roomName = document.getElementById('roomName').value.trim();
+    const roomCapacity = document.getElementById('roomCapacity').value.trim();
+
+    if (roomName === '' || roomCapacity === '') {
+      alert('Please fill out both fields!');
+      return;
+    }
+
+    // Create a new room
+    const roomDiv = document.createElement('div');
+    roomDiv.className = 'room';
+
+    const roomDetails = document.createElement('h3');
+    roomDetails.textContent = `${roomName} (Capacity: ${roomCapacity})`;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Remove';
+    deleteButton.addEventListener('click', () => {
+      roomDiv.remove();
+      if (roomList.children.length === 0) {
+        roomList.innerHTML = '<p>No rooms available. Add a room to get started.</p>';
+      }
+    });
+
+    roomDiv.appendChild(roomDetails);
+    roomDiv.appendChild(deleteButton);
+
+    // Add room to list
+    if (roomList.children[0] && roomList.children[0].tagName === 'P') {
+      roomList.innerHTML = '';
+    }
+    roomList.appendChild(roomDiv);
+
+    // Clear the form
+    roomForm.reset();
+  });
+</script>
+
+</body>
+</html>

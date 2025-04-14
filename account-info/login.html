@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Section</title>
+  <style>
+    /* CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .login-box {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333333;
+    }
+
+    .login-form .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #555555;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: #0056b3;
+    }
+
+    .signup-text {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .signup-text a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" id="home-nav">Home</a>
+  </nav> 
+  
+  <section id="login-section" class="login-container">
+    <div class="login-box">
+      <h2 class="login-title">Login</h2>
+      <form id="login-form" class="login-form">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+      </form>
+      <p class="signup-text">Don't have an account? <a href="account-creation.html">Sign Up</a></p>
+    </div>
+  </section>
+
+  <script>
+    // JavaScript
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === '' || password === '') {
+        alert('Please fill in both fields.');
+        return;
+      }
+
+      // Basic validation
+      if (username === 'admin' && password === 'password123') {
+        alert('Login successful!');
+        // Redirect or perform other actions
+      } else {
+        alert('Invalid username or password.');
+      }
+    });
+  </script>
+</body>
+</html>

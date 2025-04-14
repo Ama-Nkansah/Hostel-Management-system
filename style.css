@@ -32,16 +32,13 @@ span {
   color: teal;
 }
 
-#mine-image {
-  height: 300px;
-}
-
 .background-img {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 0, 255, 0.3)), url(./images/Hostel-background.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center; 
+  height: 100vh; 
 }
-
 #font-about {
   font-family: "Delius", serif;
   font-weight: 400;
@@ -56,6 +53,16 @@ span {
   background-color: #800000;
 }
 
+.clickable{
+  color: beige;
+}
+
+@media (max-width: 768px) {
+  .background-img {
+    background-size: contain; 
+  }
+}
+
 @media (min-width: 640px) and (max-width: 768px) {
   span {
     font-size: 50px;
@@ -66,16 +73,9 @@ span {
   span {
     font-size: 65px;
   }
-  #mine-image {
-    height: 450px;
-  }
 }
 
 @media (min-width: 1024px) {
-  #mine-image {
-    height: 550px;
-    margin-right: 20px;
-  }
   span {
     font-size: 65px;
   }

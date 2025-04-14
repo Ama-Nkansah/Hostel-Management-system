@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Project</title>
+    <title>HMS Project</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -29,27 +29,27 @@
         <div class="hidden md:flex justify-center md:gap-x-10 lg:gap-x-12">
           <a
             href="#home"
-            class="text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
+            class="clickable text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
             >Home</a
           >
           <a
             href="html-nav/about.html"
-            class="text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
+            class="clickable text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
             >About</a
           >
           <a
             href="html-nav/services.html"
-            class="text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
+            class="clickable text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
             >Services</a
           >
           <a
             href="html-nav/smart-billing.html"
-            class="text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
+            class="clickable text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
             >Smart Billing</a
           >
           <a
             href="html-nav/contact.html"
-            class="text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
+            class="clickable text-sm/6 font-semibold text-red-950 hover:bg-gray-50 p-1 rounded-sm"
             >Contact</a
           >
         </div>
@@ -79,11 +79,11 @@
          </div>
            <!-- nav links -->
             <ul class="flex flex-col space-y-4 pt-4 relative left-8 top-16 ">
-              <li><a href="#home" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Home</a></li>
-              <li><a href="html-nav/about.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">About</a></li>
-              <li><a href="html-nav/services.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Services</a></li>
-              <li><a href="html-nav/smart-billing.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Smart Billing</a></li>
-              <li><a href="html-nav/contact.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Contact</a></li>
+              <li><a href="#home" class=" text-red-950 hover:bg-gray-50 p-1 rounded-sm">Home</a></li>
+              <li><a href="html-nav/about.html" class="text-red-950 hover:bg-gray-50 p-1 rounded-sm">About</a></li>
+              <li><a href="html-nav/services.html" class="text-red-950 hover:bg-gray-50 p-1 rounded-sm">Services</a></li>
+              <li><a href="html-nav/smart-billing.html" class="text-red-950 hover:bg-gray-50 p-1 rounded-sm">Smart Billing</a></li>
+              <li><a href="html-nav/contact.html" class="text-red-950 hover:bg-gray-50 p-1 rounded-sm">Contact</a></li>
             </ul>
           
         </div>
@@ -91,31 +91,32 @@
       </nav>
     </header>
 
-    <!-- home section -->
-    <section id="home" class="background-img">
-      <div class="m-3 pt-20 ml-2 flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center">
+    <section id="home" class="background-img flex items-center justify-center min-h-screen">
+      <div class="m-3 pt-20 px-4 flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-10 w-full max-w-6xl">
+        <!-- Hero Content -->
         <div id="hero-content" class="text-center lg:text-left lg:w-1/2">
-          <h1 class="heading-writings text-2xl animate__animated animate__backInDown animate__slow mb-5 font-serif font-normal text-red-950 sm:text-5xl sm:mt-5 md:text-6xl lg:text-7xl">Welcome to <span>HMS</span></h1>
-          <p class="heading-writings font-serif text-center mt-5 text-lg text-red-950 font-extralight sm:text-2xl sm:mt-12 md:text-4xl md:mt-16">Clear Bills, Happy Stays!</p>
-
-          <div class="flex flex-row items-center justify-center gap-4 p-2 rounded-lg shadow-lg mt-6 sm:mt-12">
+          <h1 class="heading-writings text-4xl animate__animated animate__backInDown animate__slow mb-5 font-serif font-normal text-red-950 sm:mt-5 md:text-6xl lg:text-7xl">
+            Welcome to <span>HMS</span>
+          </h1>
+          <p class="heading-writings font-serif mt-5 text-lg text-red-950 font-extralight sm:text-2xl sm:mt-12 md:text-4xl md:mt-16">
+            Clear Bills, Happy Stays!
+          </p>
+          <!-- Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 p-2 shadow-lg mt-12 lg:mt-16">
             <!-- Login Button -->
-             <a href="">
-            <button id="login-button" class="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-gray-400 text-white font-semibold rounded-lg shadow-md hover:bg-gray-500 hover:shadow-lg transition-all duration-300">
-              <p class="text-base sm:text-lg md:text-xl">Login</p>
-            </button>
-          </a>
+            <a href="./account-info/login.html">
+              <button id="login-button" class="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-gray-400 text-white font-semibold rounded-lg shadow-md hover:bg-gray-500 hover:shadow-lg transition-all duration-300">
+                <p class="text-base sm:text-lg md:text-xl">Login</p>
+              </button>
+            </a>
             <!-- Create Account Button -->
-             <a href="./account-info/account-creation.html">
-            <button id="create-account-button" class="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg transition-all duration-300">
-              <p class="text-base sm:text-lg md:text-xl">Create Account</p>
-            </button>
-          </a>
+            <a href="./account-info/account-creation.html">
+              <button id="create-account-button" class="flex items-center justify-center w-full max-w-xs px-6 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg transition-all duration-300">
+                <p class="text-base sm:text-lg md:text-xl">Create Account</p>
+              </button>
+            </a>
           </div>
         </div>
       </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="index.js"></script>
-  </body>
-</html>
+    
