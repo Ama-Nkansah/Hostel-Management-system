@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hostel Electricity Billing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #800000;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #800000;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #a00000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    #report-section {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Hostel Electricity Billing</h1>
+    <form id="billing-form">
+      <div class="form-group">
+        <label for="tenant-name">Tenant Name:</label>
+        <input type="text" id="tenant-name" required />
+      </div>
+      <div class="form-group">
+        <label for="hostel-location">Hostel Location:</label>
+        <input type="text" id="hostel-location" required />
+      </div>
+      <div class="form-group">
+        <label for="hostel-address">Hostel Address:</label>
+        <input type="text" id="hostel-address" required />
+      </div>
+      <div class="form-group">
+        <label for="meter-number">Meter Number:</label>
+        <input type="text" id="meter-number" required />
+      </div>
+      <div class="form-group">
+        <label for="previous-reading">Previous Meter Reading (kWh):</label>
+        <input type="number" id="previous-reading" required />
+      </div>
+      <div class="form-group">
+        <label for="current-reading">Current Meter Reading (kWh):</label>
+        <input type="number" id="current-reading" required />
+      </div>
+      <div class="form-group">
+        <label for="rate">Rate per kWh (₵):</label>
+        <input type="number" id="rate" required />
+      </div>
+      <button type="submit">Calculate Bill</button>
+    </form>
+
+    <div id="report-section" class="hidden">
+      <h2>Billing Report</h2>
+      <p><strong>Name:</strong> <span id="report-name"></span></p>
+      <p><strong>Hostel Location:</strong> <span id="report-location"></span></p>
+      <p><strong>Hostel Address:</strong> <span id="report-address"></span></p>
+      <p><strong>Meter Number:</strong> <span id="report-meter-number"></span></p>
+      <p><strong>Electricity Used:</strong> <span id="report-usage"></span> kWh</p>
+      <p><strong>Total Amount Due:</strong> ₵<span id="report-total"></span></p>
+
+      <button id="print-btn">Print Report</button>
+      <button id="download-btn">Download Report</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const billingForm = document.getElementById('billing-form');
+      const reportSection = document.getElementById('report-section');
+      const reportName = document.getElementById('report-name');
+      const reportLocation = document.getElementById('report-location');
+      const reportAddress = document.getElementById('report-address');
+      const reportMeterNumber = document.getElementById('report-meter-number');
+      const reportUsage = document.getElementById('report-usage');
+      const reportTotal = document.getElementById('report-total');
+      const printBtn = document.getElementById('print-btn');
+      const downloadBtn = document.getElementById('download-btn');
+
+      billingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const tenantName = document.getElementById('tenant-name').value;
+        const hostelLocation = document.getElementById('hostel-location').value;
+        const hostelAddress = document.getElementById('hostel-address').value;
+        const meterNumber = document.getElementById('meter-number').value;
+        const previousReading = parseFloat(document.getElementById('previous-reading').value);
+        const currentReading = parseFloat(document.getElementById('current-reading').value);
+        const rate = parseFloat(document.getElementById('rate').value);
+
+        if (currentReading < previousReading) {
+          alert('Current reading must be greater than or equal to previous reading.');
+          return;
+        }
+
+        const usage = currentReading - previousReading;
+        const total = usage * rate;
+
+        reportName.textContent = tenantName;
+        reportLocation.textContent = hostelLocation;
+        reportAddress.textContent = hostelAddress;
+        reportMeterNumber.textContent = meterNumber;
+        reportUsage.textContent = usage.toFixed(2);
+        reportTotal.textContent = total.toFixed(2);
+
+        reportSection.classList.remove('hidden');
+      });
+
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text(`Billing Report for ${reportName.textContent}`, 10, 10);
+        doc.text(`Tenant Name: ${reportName.textContent}`, 10, 20);
+        doc.text(`Hostel Location: ${reportLocation.textContent}`, 10, 30);
+        doc.text(`Hostel Address: ${reportAddress.textContent}`, 10, 40);
+        doc.text(`Meter Number: ${reportMeterNumber.textContent}`, 10, 50);
+        doc.text(`Electricity Used: ${reportUsage.textContent} kWh`, 10, 60);
+        doc.text(`Total Amount Due: ₵${reportTotal.textContent}`, 10, 70);
+
+        doc.save('billing_report.pdf');
+      });
+    });
+  </script>
+</body>
+</html>

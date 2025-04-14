@@ -3,52 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hostel Cost Estimator</title>
+  <title>Smart Billing System</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: #f4f4f4;
       color: #333;
     }
     .container {
       max-width: 800px;
       margin: 20px auto;
       padding: 20px;
-      background-color: #eef2f7;
+      background-color: #ffffff;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
     h1 {
       text-align: center;
-      color: #444;
+      color: #800000;
+      margin-top: 50px;
     }
+
     label {
       font-weight: bold;
       display: block;
       margin-top: 15px;
     }
-    input {
+    input, select, button {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 5px;
-    }
-    .button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
       font-size: 16px;
+    }
+    button {
+      background-color: #800000;
+      color: white;
       cursor: pointer;
     }
-    .button:hover {
+    button:hover {
       background-color: #45a049;
     }
     .result {
@@ -60,42 +79,83 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
   <div class="container">
-    <h1>Hostel Cost Estimator</h1>
-    <form id="costForm">
-      <label for="itemName">Item Name:</label>
-      <input type="text" id="itemName" placeholder="Enter item name" required>
+    <h1>Smart Billing System</h1>
+    <form id="billingForm">
+      <label for="applianceName">Appliance Name:</label>
+      <input type="text" id="applianceName" placeholder="Enter appliance name" required>
 
-      <label for="itemCost">Cost per Item (₵):</label>
-      <input type="number" id="itemCost" placeholder="Enter cost per item" required>
+      <label for="power">Power (Watts):</label>
+      <select id="power">
+        <option value="150">TV (150W)</option>
+        <option value="300">Fridge (300W)</option>
+        <option value="200">Fan (200W)</option>
+        <option value="100">Light Bulb (100W)</option>
+        <option value="custom">Custom</option>
+      </select>
+      <input type="number" id="customPower" placeholder="Enter custom power (W)" style="display: none;">
 
-      <label for="itemQuantity">Quantity:</label>
-      <input type="number" id="itemQuantity" placeholder="Enter quantity" required>
+      <label for="hours">Hours Used per Day:</label>
+      <input type="number" id="hours" placeholder="Enter hours used per day" required>
 
-      <button type="button" class="button" onclick="calculateCost()">Calculate Total Cost</button>
+      <label for="days">Days Used:</label>
+      <input type="number" id="days" placeholder="Enter days used" required>
+
+      <label for="costPerKwh">Cost per kWh (₵):</label>
+      <input type="number" id="costPerKwh" placeholder="Enter cost per kWh" value="1.5" required>
+
+      <button type="button" onclick="calculateBill()">Calculate</button>
     </form>
 
     <div class="result" id="result">
       <!-- The result will be displayed here -->
     </div>
+    <footer>
+      &copy; 2025 Hostel Management System. All rights reserved.
+    </footer>
   </div>
 
   <script>
-    function calculateCost() {
-      const itemName = document.getElementById('itemName').value;
-      const itemCost = parseFloat(document.getElementById('itemCost').value);
-      const itemQuantity = parseInt(document.getElementById('itemQuantity').value);
+    const powerDropdown = document.getElementById("power");
+    const customPowerInput = document.getElementById("customPower");
 
-      if (!itemName || isNaN(itemCost) || isNaN(itemQuantity)) {
-        document.getElementById('result').innerText = 'Please fill out all fields correctly.';
+    // Show custom power input when "Custom" is selected
+    powerDropdown.addEventListener("change", () => {
+      if (powerDropdown.value === "custom") {
+        customPowerInput.style.display = "block";
+      } else {
+        customPowerInput.style.display = "none";
+      }
+    });
+
+    function calculateBill() {
+      const applianceName = document.getElementById("applianceName").value;
+      let power = parseFloat(powerDropdown.value);
+      if (powerDropdown.value === "custom") {
+        power = parseFloat(customPowerInput.value);
+      }
+
+      const hours = parseFloat(document.getElementById("hours").value);
+      const days = parseInt(document.getElementById("days").value);
+      const costPerKwh = parseFloat(document.getElementById("costPerKwh").value);
+
+      if (isNaN(power) || isNaN(hours) || isNaN(days) || isNaN(costPerKwh)) {
+        document.getElementById("result").innerText = "Please fill out all fields correctly.";
         return;
       }
 
-      const totalCost = itemCost * itemQuantity;
-      document.getElementById('result').innerHTML = `
-        <p><strong>Item:</strong> ${itemName}</p>
-        <p><strong>Cost per Item:</strong> ₵${itemCost.toFixed(2)}</p>
-        <p><strong>Quantity:</strong> ${itemQuantity}</p>
+      // Calculate energy and bill
+      const energyKwh = (power * hours * days) / 1000; // Convert to kWh
+      const totalCost = energyKwh * costPerKwh;
+
+      // Display the result
+      document.getElementById("result").innerHTML = `
+        <p><strong>Appliance:</strong> ${applianceName}</p>
+        <p><strong>Energy Consumption:</strong> ${energyKwh.toFixed(2)} kWh</p>
         <p><strong>Total Cost:</strong> ₵${totalCost.toFixed(2)}</p>
       `;
     }

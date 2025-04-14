@@ -12,14 +12,36 @@
       background-color: #f9f9f9;
       color: #333;
     }
+    nav {
+      background-color: #333;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      display: inline-block;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
     #about {
-      padding: 40px 20px;
-      background-color: #eef2f7;
+      padding: 80px 20px 40px;
+      background: linear-gradient(145deg, #f2e6e6, #e0d1d1); /* Subtle gradient */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Pop-up effect */
       text-align: center;
     }
     #about h2 {
       font-size: 2.5rem;
-      color: #333;
+      color: #800000; /* Highlighted text color */
       margin-bottom: 20px;
     }
     #about p {
@@ -32,11 +54,25 @@
       margin-right: auto;
     }
     #about strong {
-      color: #000;
+      color: #800000; /* Highlighted text color */
+      font-weight: bold;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(136, 80, 0, 0.1), rgba(255, 255, 255, 0));
+      z-index: -1;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
   <section id="about">
     <h2>About Us</h2>
     <p>
@@ -49,6 +85,11 @@
       At <strong>HMS</strong>, we aim to enhance the hostel living experience for both tenants and administrators, streamlining processes while promoting comfort and efficiency. Whether you're managing a hostel or staying in one, we’ve got you covered with tools that make everyday life simpler.
     </p>
     <p><strong>Join us and experience the future of hassle-free hostel management!</strong></p>
+    <br/>
+
+    <footer>
+      &copy; 2025 Hostel Management System. All rights reserved.
+    </footer>
   </section>
 </body>
 </html>
