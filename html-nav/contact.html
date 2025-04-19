@@ -46,6 +46,7 @@
     .form-container {
       background-color: #ffffff;
       padding: 20px;
+      margin-top: 50px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       width: 100%;
@@ -116,7 +117,7 @@
   </nav>
   <div class="form-container">
     <h2 class="spot-colour">Contact Us</h2>
-    <form action="#" method="POST">
+    <form action="#">
       <!-- Name Field -->
       <div class="form-group">
         <label for="name">Full Name</label>
@@ -139,6 +140,7 @@
       <div class="form-group">
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" placeholder="Write your message here..."></textarea>
+        <p id="confirmation"></p>
       </div>
       
       <!-- Submit Button -->
@@ -149,6 +151,20 @@
     <footer>
       &copy; 2025 Hostel Management System. All rights reserved.
     </footer>
+
+    <script>
+        document.getElementById("form-container").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from refreshing the page or submitting to a server
+
+    const message = document.getElementById("message").value; // Get the input value
+
+    // Display a confirmation or handle the message
+    document.getElementById("confirmation").textContent = `Your message "${message}" has been submitted!`;
+
+    // Clear the input field (optional)
+    document.getElementById("message").value = "";
+   });
+    </script>
   </div>
 </body>
 </html>
