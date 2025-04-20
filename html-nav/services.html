@@ -22,8 +22,10 @@
       font-size: 2.5rem;
     }
     section {
-      padding: 40px 20px;
+      margin-top: 57px;
+      padding:20px;
       background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
+      height: 100vh;
     }
     .services-container {
       max-width: 1200px;
@@ -61,6 +63,8 @@
 
     .services-topic{
      color: #800000;
+     margin-bottom: 30px;
+     margin-left: 40%;
     }
 
     nav {
@@ -85,15 +89,34 @@
       border-radius: 5px;
     }
 
+    @media (max-width: 420px) {
+      .services-topic{
+    margin-left: 15%;
+  }
+}
+
+    @media (max-width: 690px) {
+      .services-topic{
+    margin-left: 30%;
+  }
+}
+
+  @media (min-width: 840px)  and (max-width: 1024px) {
+      .services-topic{
+    margin-left: 35%;
+  }
+}
+
   </style>
+  
 </head>
 <body>
   <nav>
     <a href="../index.html" id="home-nav">Home</a>
   </nav>
 
-  <section class="mt-90">
-    <h1 class="services-topic text-center mt-90">Our Services</h1>
+  <section>
+    <h1 class="services-topic text-center">Our Services</h1>
     <div class="services-container">
       <!-- Service 1 -->
       <a href="../services-section/billing-management.html" class="card">
