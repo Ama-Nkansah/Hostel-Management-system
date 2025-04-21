@@ -18,7 +18,7 @@
     <header id="header" class="topic z-50 h-16 w-screen shadow-lg fixed top-0">
       <nav
         aria-label="Global"
-        class="flex items-center justify-between p-4 md:px-8" id="nav"
+        class="flex items-center justify-between p-2 md:px-8" id="nav"
       >
         <!--Icon and logo-->
         <div class="flex lg:flex-1 self-start" id="logo">
@@ -66,7 +66,7 @@
         </div>
 
         <!-- sidebar for smaller screens-->
-        <div id="sidebar" class="hidden transition-all duration-1000 w-screen h-screen rounded-sm z-10 relative right-27 pr-200">
+        <div id="sidebar" class="hidden transition-all duration-1000 w-full h-screen rounded-sm z-10 relative right-27 pr-200">
          <!-- my icon and close button-->
           <div class="topic flex flex-1 justify-between w-screen p-3 h-16 absolute">
             <a href="#home" class="inline-flex">
@@ -79,16 +79,15 @@
             </div>
          </div>
            <!-- nav links -->
-            <ul class="flex flex-col space-y-4 pt-4 relative left-8 top-16 ">
-              <li><a href="#home" class=".clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm z-30">Home</a></li>
-              <li><a href="html-nav/about.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">About</a></li>
-              <li><a href="html-nav/services.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Services</a></li>
-              <li><a href="html-nav/smart-billing.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Smart Billing</a></li>
-              <li><a href="html-nav/contact.html" class="clickable text-red-950 hover:bg-gray-50 p-1 rounded-sm">Contact</a></li>
+            <ul class="flex flex-col space-y-4 pt-4 relative left-8 top-16 -z-30 ">
+              <li><a href="#home" class="clickable-1 text-red-950 hover:bg-gray-50 p-1 rounded-sm z-30">Home</a></li>
+              <li><a href="html-nav/about.html" class="clickable-1 text-red-950 hover:bg-gray-50 p-1 rounded-sm">About</a></li>
+              <li><a href="html-nav/services.html" class="clickable-1 text-red-950 hover:bg-gray-50 p-1 rounded-sm">Services</a></li>
+              <li><a href="html-nav/smart-billing.html" class="clickable-1 text-red-950 hover:bg-gray-50 p-1 rounded-sm">Smart Billing</a></li>
+              <li><a href="html-nav/contact.html" class="clickable-1 text-red-950 hover:bg-gray-50 p-1 rounded-sm">Contact</a></li>
             </ul>
           
         </div>
-      </div>
       </nav>
     </header>
 

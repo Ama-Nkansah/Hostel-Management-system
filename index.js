@@ -24,7 +24,7 @@ hamburgerButton.classList.add("inline-flex","pr-10");
 });
 
 // when any of the links is clicked on the sidebar
-$(".clickable").click(function(){
+$(".clickable-1").click(function(){
 sideBar.classList.add("hidden");
 hamburgerButton.classList.add("inline-flex","pr-10");
 });
