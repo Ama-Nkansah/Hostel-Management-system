@@ -9,6 +9,9 @@
 #sidebar {
   background-color: whitesmoke;
 }
+.nav-links {
+z-index: 30;
+}
 
 .heading-writings {
   text-shadow: 1px 1px 2px wheat;
