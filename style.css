@@ -41,6 +41,7 @@ span {
   background-size: cover;
   background-position: center; 
   height: 100vh; 
+  overflow-y: hidden;
 }
 #font-about {
   font-family: "Delius", serif;
