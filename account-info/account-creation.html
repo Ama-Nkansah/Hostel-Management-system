@@ -11,8 +11,9 @@
       padding: 0;
       background: linear-gradient(145deg, #f2e6e6, #e0d1d1);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
     .btn {
@@ -23,6 +24,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 1rem;
+      margin-bottom: 20px;
     }
     .btn:hover {
       background-color: #0056b3;
@@ -72,7 +74,6 @@
     .close-btn:hover {
       background-color: #c82333;
     }
-
     nav {
       background-color: #333;
       padding: 10px 20px;
@@ -94,6 +95,14 @@
       background-color: #555;
       border-radius: 5px;
     }
+    #successMessage {
+      font-size: 1rem;
+      font-weight: bold;
+      color: green;
+      margin-top: 10px;
+      text-align: center;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -113,25 +122,44 @@
     <label for="password">Password</label>
     <input type="password" id="password" placeholder="Enter your password">
     
-    <button type="submit">Submit</button>
+    <button type="button" id="submitFormBtn">Submit</button>
     <button type="button" class="close-btn" id="closeFormBtn">Close</button>
   </div>
 
+  <div id="successMessage">Your account has been created successfully!</div>
+  
   <script>
     const openFormBtn = document.getElementById('openFormBtn');
     const closeFormBtn = document.getElementById('closeFormBtn');
     const accountForm = document.getElementById('accountForm');
+    const submitFormBtn = document.getElementById('submitFormBtn');
+    const successMessage = document.getElementById('successMessage');
 
     // Show the form when the "Create Account" button is clicked
     openFormBtn.addEventListener('click', () => {
       accountForm.style.display = 'flex';
+      successMessage.style.display = 'none'; // Hide success message if shown
     });
 
     // Hide the form when the "Close" button is clicked
     closeFormBtn.addEventListener('click', () => {
       accountForm.style.display = 'none';
     });
-  </script>
 
+    // Handle form submission and show success message
+    submitFormBtn.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      // Clear the form fields
+      document.querySelectorAll('#accountForm input').forEach(input => input.value = '');
+
+      // Show success message
+      successMessage.style.display = 'block';
+      openFormBtn.style.display = "none";
+
+      // Hide the form
+      accountForm.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
