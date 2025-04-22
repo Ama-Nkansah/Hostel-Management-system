@@ -29,3 +29,8 @@ sideBar.classList.add("hidden");
 hamburgerButton.classList.add("inline-flex","pr-10");
 });
 
+$(".clickable-1").click(function(){
+  sideBar.classList.add("hidden");
+  hamburgerButton.classList.add("inline-flex","pr-10");
+  });
+
